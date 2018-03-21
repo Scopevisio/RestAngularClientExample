@@ -1,0 +1,138 @@
+<div class="module fade-in">
+    <meta charset="utf-8"/>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">Search Scope Documentation</li>
+    </ol>
+    <h3> Search Scope Documentation </h3>
+
+    <p>Search criteria are specified as a json object: <br></p>
+    <pre class="curl-code"><code>{
+   "search":[
+      {
+         "field":"&lt;db-field&gt;",
+         "value":"&lt;value of which youre searching for&gt;",
+         "operator":"&lt;by which operator you seek&gt;"
+      }
+   ]
+}
+    </code></pre>
+
+
+    <p>A combination of search criteria is also possible:</p>
+    <pre class="curl-code"><code>{
+   "search":[
+      {
+         "field":"&lt;db-field&gt;",
+         "value":"&lt;value of which youre searching for&gt;",
+         "operator":"&lt;by which operator you seek&gt;"
+      },
+      {
+         "field":"&lt;db-field&gt;",
+         "value":"&lt;value of which youre searching for&gt;",
+         "operator":"&lt;by which operator you seek&gt;"
+      }
+   ]
+}</code></pre>
+
+    <p>Example: Find all people who live in the area with postal code starting with 53.</p>
+    <pre class="curl-code"><code>{
+   "search":[
+      {
+         "field":"person",
+         "value":"true",
+         "operator":"equals"
+      },
+      {
+         "field":"postcode1",
+         "value":"53",
+         "operator":"startswith"
+      }
+   ]
+}
+</code></pre>
+
+    <p>And here is the whole request:</p>
+    <code class="curl-code">curl -X POST "https://appload.scopevisio.com/rest/contacts" -H  "accept: application/json"
+        -H  "Authorization: Bearer [TOKEN]" -H  "content-type: application/json" -d "search : [{\"field\" : \"person\",\"value\" : \"true\",\"operator\": \"equals\" }, {\"field\" : \"postcode1,\"value\" : \"53\",\"operator\": \"startswith\"}]"</code>
+
+    <h3>Search Operators</h3>
+
+    <p>
+        Available operators for <span class="emp-words">string values</span>:<br>
+        <code>startswith</code> – if the string starts with your value, it will match<br>
+        <code>endswith</code> – if the string ends with your value, it will match<br>
+        <code>contains</code> – if your value is somewhere in the string, it will match<br>
+        <code>notequal</code> – if your value does not equal, it will match<br>
+        <code>equal</code> – if your value equals, it will match<br>
+    </p>
+
+    <p>
+        Available operators for <span class="emp-words">numbers</span>:<br>
+        <code>equal</code> – if your value equals, it will match<br>
+        <code>notequal</code> – if your value does not equal, it will match<br>
+        <code>less</code> – if your value is less than, itll match<br>
+        <code>greater</code> – if your value is greater than, it will match<br>
+        <code>lessorequal</code> - if your value is less than or equals, it will match<br>
+        <code>greaterorequal</code> - if your value is grater than or equals, it will match<br>
+    </p>
+
+    <p>
+        Available operators for <span class="emp-words">boolean values</span>:<br>
+        <code>equal</code> – if your value equals, it will match<br>
+        <code>notequal</code> – if your value does not equal, it will match<br>
+
+    </p>
+
+    <h3>Paging</h3>
+
+
+    <p>
+        Retrieving data may result in a high number of entries. That is why the results are capped to a default of 100 in several pages.
+    </p>
+    <p>
+        The number of the first <code>page</code> is 0 which is also the page default. The <code>pageSize</code> default is 100. It can be set to the maximum value of 1000.
+    </p>
+    <p>
+        Which fields should the result contain can be specified by the <code>fields</code> element.
+    </p>
+    <p>
+        Here is an example:
+    </p>
+    <pre class="curl-code"><code>{
+   "page":2,
+   "pageSize":250,
+   "fields":[
+      "id",
+      "firstname",
+      "lastname",
+      "postcode1"
+   ]
+}</code></pre>
+
+    <code class="curl-code">curl -s -d '{ "page": 2, "pageSize": 250, "fields": ["id", "firstname", "lastname", "postcode1" ]}' -H "Content-Type: application/json" -H "Authorization: Bearer [TOKEN]" https://appload.scopevisio.com/rest/contacts</code>
+
+    <p>A combination of search criteria and paging is also possible:</p>
+    <pre class="curl-code"><code>{
+   "page":2,
+   "pageSize":250,
+   "fields":[
+      "id",
+      "firstname",
+      "lastname",
+      "postcode1"
+   ],
+   "search":[
+      {
+         "field":"person",
+         "value":"true",
+         "operator":"equals"
+      },
+      {
+         "field":"postcode1",
+         "value":"53",
+         "operator":"startswith"
+      }
+   ]
+}</code></pre>
+  </div>

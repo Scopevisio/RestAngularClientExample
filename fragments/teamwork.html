@@ -1,0 +1,57 @@
+<div class="module fade-in">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">Teamwork</li>
+    </ol>
+    <h3> Teamwork </h3>
+    <div class="explain-icon">
+        <img class="explain-icon" src="assets/info.svg" width="64px" id="info-box-table-contacts">
+        <div class="arrow-up"></div>
+    </div>
+    <div id="table">
+        <table ng-table="tableParams" class="table table-striped table-explain" show-filter="true">
+            <tr ng-repeat="record in $data" style="cursor:pointer;">
+                <td id="{{record.id}}" title="img" class="col-sm-1" style="text-align: center">
+
+                    <img width="32px" ng-click="showInfo(record)" height="32px" check-image ng-src="{{loc}}/rest/contact/{{record.id}}/thumb" class="explain-img-compact">
+                    <div class="arrow-right"></div>
+                    <img src="assets/info.svg" ng-click="showWebServiceInfo()" width="32px"  height="32px" class="info-box-table-contact-img">
+
+                </td>
+                <td id="{{record.id}}" ng-click="showInfo(record)" title="'Id'" filter="{ id: 'number'}" sortable="'id'" class="col-sm-1">
+                    {{record.id}}</td>
+                <td data-title="'Name'" ng-click="showInfo(record)" title="Name" filter="{ firstname: 'text'}" sortable="'firstname'" class="col-sm-3">
+                    {{record.firstname}}</td>
+                <td data-title="'Nachname'" ng-click="showInfo(record)" title="Nachname" filter="{ lastname: 'text'}" sortable="'lastname'" class="col-sm-3">
+                    {{record.lastname}}
+                </td>
+                <td data-title="'Email'" ng-click="showInfo(record)" title="Email" filter="{ email: 'text'}" sortable="'email'" class="col-sm-3">
+                    {{record.email}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="contact-detail" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="contact-detail-header"></h4>
+                </div>
+                <div class="modal-body">
+                    <img id="contact-detail-thumb">
+                    <p id="contact-detail-body"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

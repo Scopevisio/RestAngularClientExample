@@ -1,0 +1,48 @@
+<div class="module fade-in">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">Projekte</li>
+    </ol>
+    <h3> Projects </h3>
+    <div id="project-alert" class="alert alert-warning alert-dismissible" role="alert">
+    </div>
+    <div class="explain-icon">
+        <img class="explain-icon" src="assets/info.svg" width="64px" id="info-box-table-projects">
+        <div class="arrow-up"></div>
+    </div>
+    <div id="table">
+        <table ng-table="tableParams" class="table table-striped table-explain" show-filter="true">
+            <tr ng-repeat="record in $data" ng-click="showInfo(record)" style="cursor:pointer;">
+                <td id="{{record.id}}" title="'Id'" filter="{ id: 'number'}" sortable="'id'" class="col-sm-2">
+                    {{record.id}}</td>
+                <td title="'Name'" filter="{ name: 'text'}" sortable="'name'" class="col-sm-5">
+                    {{record.name}}</td>
+                <td title="'Category'" filter="{ category: 'text'}" sortable="'category'" class="col-sm-5">
+                    {{record.category}}
+                    <!-- <button class="btn btn-sm pull-right" ng-click="showInfo(record)"><span class="glyphicon glyphicon-info-sign"></span></button> -->
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div id="project-detail" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="project-detail-header"></h4>
+                </div>
+                <div class="modal-body" id="project-detail-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

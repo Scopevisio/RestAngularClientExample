@@ -1,0 +1,164 @@
+* {
+    font-family: "Open Sans", sans-serif;
+    color:#37404f;
+    font-weight:300 !important;
+}
+
+.lightgray {
+    color:#b4b9c1 !important;
+}
+
+.formular {
+    background-color:red;
+    background: transparent url('../assets/2017_Januar_Registrieren_img.jpg') no-repeat left -100px !important;
+    min-height:735px !important;
+}
+
+.form_area {
+    background-color:#f3f6f9;
+    padding-top:25px;
+    /*text-align:center;*/
+}
+
+h2 {
+    padding:25px 7%;
+    font-size:49px !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+    color: #ADADAD !important;
+}
+
+p {
+    font-size:22px;
+    padding:0 7% !important;
+}
+
+.form-group {
+    padding:0 8%;
+}
+
+a {
+    color:#0088c2 !important;
+}
+
+a:hover {
+    color:#006894 !important;
+}
+
+.btn {
+    background-color: #0088c2;
+    border: 1px solid #0088c2;
+    /*border-radius: 20px !important;*/
+    color: #ffffff !important;
+    display: inline-block;
+    outline-width: 0 !important;
+    padding: 4px 24px !important;
+    text-align: center !important;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+}
+
+.btn:hover {
+    background-color: #006894;
+    border: 1px solid #006894;
+}
+
+.contact-dark-grey {
+    background: rgba(55, 64, 79, 0.5) none repeat scroll 0 0;
+    color: #fff !important;
+    padding: 68px 50px;
+}
+
+.contact-dark-grey h2, .contact-dark-grey p, .contact-dark-grey small {
+    color: #FFF !important;
+}
+
+.contact-grey-form {
+    background: #f3f6f9 none repeat scroll 0 0;
+}
+
+small.form-text {
+    font-size:14px !important;
+}
+
+small {
+    font-size:16px !important;
+}
+
+.form-check-label {
+    padding-left:0px !important;
+}
+
+.no_bottom_margin {
+    margin-bottom:0px !important;
+}
+
+.no_top_padding {
+    padding-top:0px !important;
+}
+
+.big_number {
+    font-size:100px;
+    line-height:120px;
+}
+
+.container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.footer-copyright {
+    background-color: #f0f3f7;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.footer-copyright p {
+    font-size: 0.9em;
+    line-height: 1.8em;
+    text-align: center;
+}
+
+.footer-copyright a {
+    color: #77808f !important;
+    text-decoration: none !important;
+}
+
+.logo_area {
+    padding:20px 0;
+}
+
+.spinner {
+    left: 50%;
+    top: 50%;
+    height:60px;
+    width:60px;
+    margin:0px auto;
+    -webkit-animation: rotation .6s infinite linear;
+    -moz-animation: rotation .6s infinite linear;
+    -o-animation: rotation .6s infinite linear;
+    animation: rotation .6s infinite linear;
+    border-left:6px solid rgba(0,136,194,.15);
+    border-right:6px solid rgba(0,136,194,.15);
+    border-bottom:6px solid rgba(0,136,194,.15);
+    border-top:6px solid rgba(0,136,194,.8);
+    border-radius:100%;
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes rotation {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes rotation {
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(359deg);}
+}
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}

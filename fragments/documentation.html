@@ -1,0 +1,80 @@
+<div class="module fade-in">
+
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">General Documentation</li>
+    </ol>
+
+    <h2>General Documentation</h2>
+    <h4>Updates</h4>
+
+    <p>Some fields of the objects you may want to change are allowed to be empty(null). To delete the data in those
+        fileds you can set it to <code>null</code> or if it is a string value to an empty string <code>""</code>. There
+        are also fields which cannot be empty. In this case if the parameter is set to <code>null</code> or <code>""</code> it will be ignored.</p>
+
+    <p>To leave the data of the object unchanged just omit the json parameter.</p>
+
+    <p>Example: A task needs to be updated. The topic of a task is a mandatory field and setting it to <code>null</code>
+        will be ignored. <br>
+        Another field which is not allowed to be empty is <code>status</code>. Setting the status of a task to <code>null</code>
+        will be ignored. <br>
+        The <code>responsibleContactId</code> of a task is allowed to be empty. So setting it to <code>null</code> will
+        empty the field.<br>
+        All task fields you don't see in the example json below (<code>projectId, outgoingInvoiceId, startDateTS</code>,
+        etc.) will keep their values.
+    </p>
+
+    <pre class="curl-code"><code>{
+  "topic": null,
+  "contactId": 10018,
+  "contactLegacyId": "",
+  "contactSphere": "Kunde",
+  "responsibleContactId": null,
+  "reminderDateTS": 1546210800000,
+  "priority":"hoch",
+  "status": null
+}
+</code></pre>
+
+    <h3 id="cf">Custom fields (Benutzerdefinierte Felder)</h3>
+    <h4>Naming</h4>
+    <p>The names of the custom fields used in the endpoints are not the names the user has set for these in the client
+        application.
+        The names are put together using the type of the field and its id (e.g <code>customLong3</code>). The field type
+        is set at its creation by the user. The id is assigned at fields creation. There are six custom fields types:
+    <ul>
+    <li>Text (Text)</li>
+    <li>Zahl (Long)</li>
+    <li>Betrag (Amount)</li>
+    <li>JA/Nein (Boolean)</li>
+    <li>Datum (Date)</li>
+    <li>Zeitpunkt (DateTime)</li>
+</ul>
+    </p>
+    <p>
+        To put together a name of a custom field the following schema is used:
+        <code>custom&lt;field type&gt;&lt;field id&gt;</code>.
+        So the name of a field with type DateTime and id 4 is <code>customDateTime4</code>.
+    </p>
+
+    <h4>Allowable values and multiple selection</h4>
+    <p>Custom fields of type text can be specified to use multiple selection combined with allowable values. The value separator to use is <code>§§</code>.</p>
+
+    <p>Example:</p>
+    <pre class="curl-code"><code>{
+  "topic": "My topic",
+  "contactId": 10018,
+  "priority":"hoch",
+  "customFields": [
+    {
+      "customFieldName": "customText7",
+      "customFieldValue": "aa§§bb"
+    },
+    {
+      "customFieldName": "customAmount3",
+      "customFieldValue": "4,67"
+    }
+  ]
+}
+</code></pre>
+</div>

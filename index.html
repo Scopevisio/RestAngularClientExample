@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="webApi">
+<head>
+    <title> Scopevisio mit REST </title>
+    <link rel="icon" href="https://www.scopevisio.com/favicon.ico" type="image/ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/sv-style.css">
+
+    <!-- ANGULAR -->
+    <script src="dep/angular.min.js"></script>
+    <script src="dep/angular-route.js"></script>
+    <script src="dep/angular-resource.js"></script>
+
+    <!-- JQUERY -->
+    <script src="dep/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="dep/bootstrap.min.js"></script>
+
+
+    <!-- LOGIC -->
+    <script src="js/index.js"></script>
+
+    <!-- jsonExplorer -->
+    <script src="dep/xplorer.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/xplorer.min.css" />
+
+    <!-- ngTables -->
+    <link rel="stylesheet" href="css/ng-table.min.css">
+    <script src="dep/ng-table.min.js"></script>
+
+    <!-- autocomplete -->
+    <script src="dep/angucomplete-alt.min.js"></script>
+
+    <!-- Datepicker -->
+    <script src="dep/angular-datepicker.min.js"></script>
+    <link rel="stylesheet" href="css/angular-datepicker.min.css">
+
+
+</head>
+<body ng-controller="indexController as vm">
+
+<!-- This isnt needed currently
+<div id="sidebar-navigational">
+    <a class="anchorer" href="#!"><img src="../assets/scopevisio-logo-scroll.png" class="logo-img"></a>
+
+    <div class="anchor-object"><div class="anchor-title">Apps</div></div>
+    <div class="anchor-object"><a class="anchorer" href="#!contacts">Contacts</a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!projects">Projects</a></div>
+    <div class="anchor-object"><div class="anchor-title">API Examples</div></div>
+    <div class="anchor-object"><a class="anchorer" href="#!account">Account</a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!contact-example">Contact (single)</a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!contacts-example">Contacts </a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!hello">Hello</a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!organisations">Organisations</a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!project-example">Project (single) </a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!projects-example">Projects </a></div>
+    <div class="anchor-object"><a class="anchorer" href="#!token">Token/Login</a></div>
+</div>
+-->
+
+<nav class="navbar navbar-scopevisio" id="sv-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="assets/scopevisio-logo-scroll.png" class="logo-img"></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" id="sv-menu-right" ng-if="vm.account">
+            <li class="dropdown" id="account-user">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ vm.account.user.firstName}} {{ vm.account.user.lastName }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu sv-dropdown-menu">
+                    <li>
+                        <a ng-click="vm.onLogout()">Abmelden</a>
+                    </li>
+                    <li class="explain-li" ng-click="vm.onExplanationClick('login')">  <img class="" src="assets/info.svg" style="width: 28px;" > Login </li>
+                </ul>
+            </li>
+            <li class="dropdown" id="org-menu">
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ vm.account.customer.publicId }} / {{ vm.account.organisation.name }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu sv-dropdown-menu">
+                    <li ng-repeat="org in vm.organisations">
+                        <a ng-click="vm.onChangeOrganisation(org)">{{org.name}}</a>
+                    </li>
+                    <li class="explain-li" ng-click="vm.onExplanationClick('org')" id="explain-org"><img class="" src="assets/info.svg" style="width: 28px;" > Organisation </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+<div id="content" class="fade-in" token="">
+    <div class="fragment-content" ng-view></div>
+
+    <div id="login-detail" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="login-detail-header"></h4>
+                </div>
+                <div class="modal-body">
+                    <img id="login-detail-thumb">
+                    <p id="login-detail-body"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

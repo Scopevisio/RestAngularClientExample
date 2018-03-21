@@ -1,0 +1,28 @@
+<div class="module">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#!tasks">Aufgaben</a></li>
+        <li class="active" id="active-task">{{title}}</li>
+    </ol>
+    <div id="char-panel">
+        <div id="char-quickinfo">
+            <p id="char-title">{{title}}</p>
+        </div>
+    </div>
+    <div class="explain-icon">
+        <img class="explain-icon" src="assets/info.svg" width="64px" id="info-box-table-task">
+        <div class="arrow-up"></div>
+    </div>
+    <div id="table">
+        <table ng-table="taskDetails" class="table table-striped table-explain" show-filter="false">
+            <tr ng-repeat="(key, contact) in $contactInfo" ng-click="">
+                <td data-title="" title="Param" filter="{key: 'text'}" class="col-sm-1">
+                    {{key}}
+                </td>
+                <td title="Name" class="col-sm-3">
+                    {{contact}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
